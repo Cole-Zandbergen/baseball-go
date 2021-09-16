@@ -69,7 +69,7 @@ func (p *Player) Initialize(s string) {
 
 func (p Player) print() {
 	name := p.lastname + ", " + p.firstname
-	fmt.Printf("\n%20s%-5s%1.3f%1.3f%1.3f%1.3f", name, ":", p.battingaverage, p.sluggingpercentage, p.obp, p.ops)
+	fmt.Printf("\n%20s%-5s%15.3f%15.3f%15.3f%15.3f", name, ":", p.battingaverage, p.sluggingpercentage, p.obp, p.ops)
 }
 
 //this function converts a string to an int
@@ -83,10 +83,7 @@ func convert(s string) float64 {
 //function to calculate and set the player's batting average
 func (p *Player) setBA() {
 	a := p.singles + p.doubles + p.triples + p.homeruns
-	fmt.Printf("\nTotal hits for %s: %f", p.lastname, a)
-	fmt.Printf("\nTotal atbats for %s: %f", p.lastname, p.atbats)
 	p.battingaverage = a / p.atbats
-	fmt.Printf("\nBatting average for %s: %1.3f", p.lastname, p.battingaverage)
 }
 
 //function to calculate and set a player's slugging percentage
