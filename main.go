@@ -63,10 +63,18 @@ func (p *Player) Initialize(s string) {
 	p.homeruns = convert(list[7])
 	p.walks = convert(list[8])
 	p.hitbypitch = convert(list[9])
+
+	//Set all the variables that are listed in the file, then call the functions to set the stats
+	//that need to be computed
+	p.setBA()
+	p.setSP()
+	p.setOBP()
+	p.setOPS()
 }
 
 func (p Player) print() {
-	fmt.Println("\n" + p.firstname + " " + p.lastname + ": ")
+	name := p.lastname + ", " + p.firstname
+	fmt.Printf("\n%-20s%5s%1.3f%1.3f%1.3f%1.3f", name, ":", p.battingaverage, p.sluggingpercentage, p.obp, p.ops)
 }
 
 //this function converts a string to an int
@@ -92,9 +100,22 @@ func (p *Player) setSP() {
 	p.sluggingpercentage = (s + d + t + h) / p.atbats
 }
 
-//function to calculate and set a player's
+//function to calculate and set a player's on base percentage
 func (p *Player) setOBP() {
+	s := p.singles
+	d := p.doubles
+	t := p.triples
+	h := p.homeruns
+	w := p.walks
+	hbp := p.hitbypitch
+	total := s + d + t + h + w + hbp
+	p.obp = total / p.plateappearances
+}
 
+//function to calculate and set a player's on-base plus slugging percentage
+func (p *Player) setOPS() {
+	//this one's easy, just set ops to be sluggingpercentage + obp
+	p.ops = p.sluggingpercentage + p.obp
 }
 
 /**
