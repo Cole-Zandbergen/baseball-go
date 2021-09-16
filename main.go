@@ -12,6 +12,10 @@
 	*********************
 */
 
+/*
+	IM MAKING CHANGES HERE< HI
+*/
+
 package main
 
 import (
@@ -87,9 +91,9 @@ func (p *Player) setSP() {
 	p.sluggingpercentage = (s + d + t + h) / p.atbats
 }
 
-//function to calculate and set a player's 
-func (p *Player) setOBP(){
-	
+//function to calculate and set a player's
+func (p *Player) setOBP() {
+
 }
 
 /**
