@@ -69,7 +69,7 @@ func (p *Player) Initialize(s string) {
 
 func (p Player) print() {
 	name := p.lastname + ", " + p.firstname
-	fmt.Printf("\n%-20s%5s%1.3f%1.3f%1.3f%1.3f", name, ":", p.battingaverage, p.sluggingpercentage, p.obp, p.ops)
+	fmt.Printf("\n%20s%-5s%1.3f%1.3f%1.3f%1.3f", name, ":", p.battingaverage, p.sluggingpercentage, p.obp, p.ops)
 }
 
 //this function converts a string to an int
@@ -83,7 +83,10 @@ func convert(s string) float64 {
 //function to calculate and set the player's batting average
 func (p *Player) setBA() {
 	a := p.singles + p.doubles + p.triples + p.homeruns
+	fmt.Printf("\nTotal hits for %s: %f", p.lastname, a)
+	fmt.Printf("\nTotal atbats for %s: %f", p.lastname, p.atbats)
 	p.battingaverage = a / p.atbats
+	fmt.Printf("\nBatting average for %s: %1.3f", p.lastname, p.battingaverage)
 }
 
 //function to calculate and set a player's slugging percentage
@@ -151,7 +154,7 @@ func main() {
 
 		//Now that the list is complete, print out each player's stats
 		fmt.Printf("Baseball team report: --- %d players were found in the file", len(PlayerList))
-		fmt.Printf("\n%-20s%5s%15s%15s%15s%15s", "     PLAYER NAME", ":", "AVERAGE", "SLUGGING", "ONBASE%", "OPS")
+		fmt.Printf("\n%-20s%-5s%15s%15s%15s%15s", "     PLAYER NAME", ":", "AVERAGE", "SLUGGING", "ONBASE%", "OPS")
 
 		for i := 0; i < len(PlayerList); i++ {
 			PlayerList[i].print()
