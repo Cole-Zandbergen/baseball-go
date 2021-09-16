@@ -12,11 +12,6 @@
 	*********************
 */
 
-/*
-	HELLO, THIS IS A CHANGE
-	I made this change in the github website. I want it to sync with the VS code editor
-*/
-
 package main
 
 import (
