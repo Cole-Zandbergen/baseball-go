@@ -48,8 +48,10 @@ type Player struct {
 // the string input is intended to be a line from the data file
 func (p *Player) Initialize(s string) {
 	list := strings.Split(s, " ") //split the string into different words, then assign each of
-	p.firstname = list[0]         //the player's attributes based on the list of words
-	p.lastname = list[1]          //this relies on the inputs being in the correct order
+	//the player's attributes based on the list of words
+	//this relies on the inputs being in the correct order
+	p.firstname = list[0]
+	p.lastname = list[1]
 	p.plateappearances = convert(list[2])
 	p.atbats = convert(list[3])
 	p.singles = convert(list[4])
@@ -67,13 +69,14 @@ func (p *Player) Initialize(s string) {
 	p.setOPS()
 }
 
+//prints out a formatted string with the player's stats
 func (p Player) print() {
 	name := p.lastname + ", " + p.firstname
 	fmt.Printf("\n%20s%-5s%15.3f%15.3f%15.3f%15.3f", name, ":", p.battingaverage, p.sluggingpercentage, p.obp, p.ops)
 }
 
 //this function converts a string to an int
-//This function's existence makes it easier for me to initialize each property of the player object
+//This function's existence makes it easier to initialize each property of the player object
 func convert(s string) float64 {
 	var x float64
 	x, _ = strconv.ParseFloat(s, 64)
