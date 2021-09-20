@@ -48,8 +48,8 @@ type Player struct {
 // the string input is intended to be a line from the data file
 func (p *Player) Initialize(s string) {
 	list := strings.Split(s, " ") //split the string into different words, then assign each of
-	//the player's attributes based on the list of words
-	//this relies on the inputs being in the correct order
+	                              //the player's attributes based on the list of words
+	                              //this relies on the inputs being in the correct order
 	p.firstname = list[0]
 	p.lastname = list[1]
 	p.plateappearances = convert(list[2])
